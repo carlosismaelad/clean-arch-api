@@ -5,6 +5,7 @@ export interface IProductProps {
   name: string;
   description: string;
   price: number;
+  active: boolean;
 }
 
 export class Product {
@@ -12,7 +13,6 @@ export class Product {
   private props: IProductProps;
   private _createdAt: string;
   private _updatedAt?: string;
-  private _active: boolean;
 
   constructor(props: IProductProps) {
     if (!props.name || typeof props.name !== "string")
@@ -31,7 +31,7 @@ export class Product {
     this._id = randomUUID();
     this.props = props;
     this._createdAt = formatsToBrazilianLocalDate();
-    this._active = true;
+    this.props.active = true;
   }
 
   get id() {
@@ -74,11 +74,11 @@ export class Product {
   }
 
   get active(): boolean {
-    return this._active;
+    return this.props.active;
   }
 
   set active(value: boolean) {
-    this._active = value;
+    this.props.active = value;
     this._updatedAt = formatsToBrazilianLocalDate();
   }
 }
