@@ -1,7 +1,5 @@
 import "dotenv/config";
 import fastify from "fastify";
-import { HTTPRequestPart } from "fastify/types/request";
-import { Http2ServerResponse } from "http2";
 
 const server = fastify({ logger: true });
 
