@@ -34,6 +34,10 @@ export class Product {
     this._active = true;
   }
 
+  get id() {
+    return this._id;
+  }
+
   get name(): string {
     return this.props.name;
   }
