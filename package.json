@@ -1,0 +1,24 @@
+{
+  "name": "clean-arch-api",
+  "version": "1.0.0",
+  "description": "An essay on decoupled APIs with node.js",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx watch src/server.ts"
+  },
+  "author": "Carlos Dourado",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.7.9",
+    "prettier": "^3.3.3",
+    "tsup": "^8.3.0",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "fastify": "^5.0.0"
+  }
+}
