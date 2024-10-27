@@ -1,4 +1,3 @@
-import { it } from "node:test";
 import { IRepository } from "./IRepository";
 
 export class BaseRepository<T extends { id: string }>
@@ -14,16 +13,19 @@ export class BaseRepository<T extends { id: string }>
     return item;
   }
 
-  async read(id?: string): Promise<T | T[]> {
-    if (id) {
-      const item = this.db.get(id);
-      if (!item) {
-        throw new Error("Item não encontrado!");
-      }
-      return item;
-    } else {
-      return Array.from(this.db.values());
+  async readAll(): Promise<T[]> {
+    return Array.from(this.db.values());
+  }
+
+  async readById(id?: string): Promise<T> {
+    if (!id) {
+      throw new Error("Id não informado!");
     }
+    const item = this.db.get(id);
+    if (!item) {
+      throw new Error("Item não encontrado!");
+    }
+    return item;
   }
 
   async update(id: string, item: T): Promise<T | null> {
