@@ -1,6 +1,7 @@
 import { Client, ClientConfig, QueryConfig, QueryResult } from "pg";
+import "dotenv/config";
 
-async function query(
+export async function query(
   queryObject: string | QueryConfig<any>,
 ): Promise<QueryResult<any>> {
   let client: Client | undefined;
@@ -15,24 +16,19 @@ async function query(
   }
 }
 
-async function getNewClient(): Promise<Client> {
+export async function getNewClient(): Promise<Client> {
   const clientConfig: ClientConfig = {
-    host: process.env.POSTGRES_HOST,
-    port: Number(process.env.POSTGRES_PORT),
-    user: process.env.POSTGRES_USER,
-    database: process.env.POSTGRES_DB,
-    password: process.env.POSTGRES_PASSWORD,
+    host: process.env.PG_HOST,
+    port: Number(process.env.PG_PORT),
+    user: process.env.PG_USER,
+    database: process.env.PG_DB,
+    password: process.env.PG_PASS,
     ssl: getSSLValues(),
   };
   const client = new Client(clientConfig);
   await client.connect();
   return client;
 }
-
-export default {
-  query,
-  getNewClient,
-};
 
 function getSSLValues(): boolean | { ca: string } {
   if (process.env.POSTGRES_CA) {
