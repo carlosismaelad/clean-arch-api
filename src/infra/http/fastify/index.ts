@@ -4,7 +4,7 @@ import fastify from "fastify";
 const server = fastify({ logger: true });
 
 const app = async () => {
-  server.get("/", async (request, resposnse) => {
+  server.get("/", async (request, response) => {
     return "API ok!";
   });
   try {
