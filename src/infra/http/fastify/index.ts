@@ -1,12 +1,12 @@
 import "dotenv/config";
 import fastify from "fastify";
+import { rootRoute } from "../routes/rootRoute";
 
 const server = fastify({ logger: true });
 
 const app = async () => {
-  server.get("/", async (request, response) => {
-    return "API ok!";
-  });
+  server.register(rootRoute);
+
   try {
     server.listen({
       host: "0.0.0.0",
@@ -16,8 +16,8 @@ const app = async () => {
       `🟢 Server Fastify is running on Port ${process.env.SERVER_PORT}!`,
     );
   } catch (error) {
-    console.log("Error server fastify: ", error);
+    console.log("🔴 Error server fastify: ", error);
   }
 };
 
-app();
+export default app();
