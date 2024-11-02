@@ -1,7 +1,7 @@
 import { IProductProps, Product } from "domain/entities/Product";
 import { ProductRepository } from "domain/repository/product/ProductRepository";
 import { FastifyRequest } from "fastify";
-import { CreateProductUseCase } from "usecases/product-usecases/CreateProductUseCase";
+import { CreateProductUseCase } from "application/usecases/product-usecases/CreateProductUseCase";
 
 const productRepository = new ProductRepository();
 const createProductUseCase = new CreateProductUseCase(productRepository);
