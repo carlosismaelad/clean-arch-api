@@ -12,7 +12,7 @@ export class ProductRepository
     const client = await getNewClient();
     try {
       const query =
-        "INSERT INTO products (id, name, price) VALUES ($1, $2, $3) RETURNING *";
+        "INSERT INTO products (name, description, price) VALUES ($1, $2, $3) RETURNING *";
       const values = [item.name, item.description, item.price];
       const result = await client.query(query, values);
       return result.rows[0];
