@@ -1,12 +1,8 @@
-import { getNewClient } from "../../../infra/database/connection";
-import { IRepository } from "../IRepository";
-import { Product } from "../../entities/Product";
-import { BaseRepository } from "../BaseRepository";
+import { getNewClient } from "../../infrastructure/database/connection";
+import { IProductRepository } from "../../shared/abstractions/IProductRepository";
+import { Product } from "../../core/product/entity/Product";
 
-export class ProductRepository
-  extends BaseRepository<Product>
-  implements IRepository<Product>
-{
+export class ProductRepositoryPostgres implements IProductRepository<Product> {
   async createItem(item: Product): Promise<Product> {
     //
     const client = await getNewClient();

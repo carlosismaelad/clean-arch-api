@@ -1,4 +1,4 @@
-export interface IRepository<T> {
+export interface IProductRepository<T> {
   createItem(item: T): Promise<T>;
   readAll(): Promise<T[]>;
   readById(id?: string): Promise<T>;

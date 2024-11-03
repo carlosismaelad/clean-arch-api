@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import formatsToBrazilianLocalDate from "../../utils/formatsToBrazilianLocalDate";
+import formatsToBrazilianLocalDate from "../../../utils/formatsToBrazilianLocalDate";
 
 export interface IProductProps {
   name: string;
@@ -13,6 +13,10 @@ export class Product {
   private props: IProductProps;
   private _createdAt: string;
   private _updatedAt?: string;
+
+  private updateTimestamp() {
+    this._updatedAt = formatsToBrazilianLocalDate();
+  }
 
   constructor(props: IProductProps) {
     if (!props.name || typeof props.name !== "string")
@@ -44,7 +48,7 @@ export class Product {
 
   set name(value: string) {
     this.props.name = value;
-    this._updatedAt = formatsToBrazilianLocalDate();
+    this.updateTimestamp();
   }
 
   get description(): string {
@@ -53,7 +57,7 @@ export class Product {
 
   set description(value: string) {
     this.props.description = value;
-    this._updatedAt = formatsToBrazilianLocalDate();
+    this.updateTimestamp();
   }
 
   get price(): number {
@@ -62,7 +66,7 @@ export class Product {
 
   set price(value: number) {
     this.props.price = value;
-    this._updatedAt = formatsToBrazilianLocalDate();
+    this.updateTimestamp();
   }
 
   get createdAt() {
@@ -79,6 +83,6 @@ export class Product {
 
   set active(value: boolean) {
     this.props.active = value;
-    this._updatedAt = formatsToBrazilianLocalDate();
+    this.updateTimestamp();
   }
 }

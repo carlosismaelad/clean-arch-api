@@ -1,11 +1,11 @@
-import { getNewClient } from "../src/infra/database/connection.js";
+import { getNewClient } from "./infrastructure/database/connection.js";
 import "dotenv/config";
-import app from "./infra/http/fastify/index.js";
+import app from "./infrastructure/http/fastify/index.js";
 
 async function startServer() {
   try {
     const client = await getNewClient();
-    console.log("🟢 Servidor iniciando...");
+    console.log("🟢 Servidor iniciado!");
   } catch (error) {
     console.log("🔴 Erro ao tentar conexão com o banco de dados: ", error);
     process.exit(1);
