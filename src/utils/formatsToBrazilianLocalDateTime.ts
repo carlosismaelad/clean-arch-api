@@ -1,4 +1,4 @@
-export default function formatsToBrazilianLocalDate() {
+export default function formatsToBrazilianLocalDateTime() {
   const dateInBrazil = new Intl.DateTimeFormat("pt-BR", {
     timeZone: "America/Sao_Paulo",
     year: "numeric",

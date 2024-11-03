@@ -71,7 +71,7 @@ export class ProductRepositoryPostgres implements IProductRepository<Product> {
     }
   }
 
-  async softDelete(id: string): Promise<void> {
+  async deactivate(id: string): Promise<void> {
     const client = await getNewClient();
     try {
       const queryCheck =
