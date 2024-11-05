@@ -1,18 +1,13 @@
-import { IProductProps, Product } from "core/product/entity/Product";
-import { ProductRepositoryPostgres } from "../../externals/postgres/ProductRepositoryPostgres";
 import { FastifyRequest } from "fastify";
+import IProductProps from "../../shared/abstractions/IProductProps";
 import { CreateProductUseCase } from "core/product/usecases/CreateProductUseCase";
-
-const productRepository = new ProductRepositoryPostgres();
-const createProductUseCase = new CreateProductUseCase(productRepository);
 
 async function handleCreateProduct(
   request: FastifyRequest<{ Body: IProductProps }>,
+  createdProductUseCase: CreateProductUseCase,
 ) {
   const productData: IProductProps = request.body;
-  const product = new Product(productData);
-  const createdProduct = await createProductUseCase.execute(product);
-  return createdProduct;
+  return createdProductUseCase.execute(productData);
 }
 
 export { handleCreateProduct };

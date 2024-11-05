@@ -1,4 +1,4 @@
-export interface IProductProps {
+export default interface IProductProps {
   name: string;
   description?: string;
   price?: number;
