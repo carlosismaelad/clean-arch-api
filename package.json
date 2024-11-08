@@ -11,8 +11,8 @@
     "destroy": "docker system prune -a",
     "lint:check": "prettier --check .",
     "lint:fix": "prettier --write .",
-    "migration:create": "node-pg-migrate --migrations-dir src/infra/migrations create",
-    "migration:up": "node-pg-migrate --migrations-dir src/infra/migrations --envPath .env up",
+    "migration:create": "node-pg-migrate --migrations-dir src/infrastructure/migrations create",
+    "migration:up": "node-pg-migrate --migrations-dir src/infrastructure/migrations --envPath .env up",
     "wait-for-postgres": "node src/infra/scripts/wait-for-postgres.js"
   },
   "author": "Carlos Dourado",

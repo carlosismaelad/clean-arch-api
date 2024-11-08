@@ -1,6 +1,5 @@
 import { getNewClient } from "./infrastructure/database/connection.js";
-import "dotenv/config";
-import app from "./infrastructure/http/fastify/index.js";
+import { app } from "./infrastructure/http/fastify/index.js";
 
 async function startServer() {
   try {
