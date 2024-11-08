@@ -1,5 +1,5 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import connection from "../../../infrastructure/database/connection";
+import connection from "../../../../infrastructure/database/connection";
 
 async function status(request: FastifyRequest, reply: FastifyReply) {
   const updatedAt = new Date().toISOString();

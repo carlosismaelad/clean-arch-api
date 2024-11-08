@@ -1,6 +1,6 @@
 import migrationRunner from "node-pg-migrate";
 import { join } from "node:path";
-import connection from "../../../infrastructure/database/connection";
+import connection from "../../../../infrastructure/database/connection";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { MigrationDirection } from "node-pg-migrate/dist/types";
 

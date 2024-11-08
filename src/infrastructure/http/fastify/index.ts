@@ -1,11 +1,11 @@
 import "dotenv/config";
 import fastify from "fastify";
-import registerRoutes from "../routes/registerRoutes";
+import registerRoutes from "../routes/v1/registerRoutes";
 
 const server = fastify({ logger: true });
 
 export async function app() {
-  await registerRoutes(server);
+  await server.register(registerRoutes, { prefix: "api/v1" });
 
   try {
     const port = process.env.SERVER_PORT

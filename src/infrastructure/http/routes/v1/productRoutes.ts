@@ -1,4 +1,4 @@
-import { handleCreateProduct } from "application/controllers/product/ProductController";
+import { handleCreateProduct } from "../../../../application/controllers/v1/product/ProductController";
 import { ProductService } from "core/product/services/ProductService";
 import { CreateProductUseCase } from "core/product/usecases/CreateProductUseCase";
 import { ProductRepositoryPostgres } from "externals/postgres/ProductRepositoryPostgres";
