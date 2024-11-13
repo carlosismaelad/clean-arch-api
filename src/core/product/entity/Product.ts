@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import { IProductProps } from "shared/abstractions/IProductProps";
+import IProductProps from "../../../shared/abstractions/IProductProps";
 
 export class Product {
   public _id: string;
