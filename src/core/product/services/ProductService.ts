@@ -1,6 +1,6 @@
 import { Product } from "core/product/entity/Product";
 import { IProductRepository } from "shared/abstractions/IProductRepository";
-import { IProductProps } from "shared/abstractions/IProductProps";
+import IProductProps from "shared/abstractions/IProductProps";
 import formatsToBrazilianLocalDate from "../../../utils/formatsToBrazilianLocalDateTime";
 
 export class ProductService {
@@ -35,7 +35,7 @@ export class ProductService {
     product.price = data.price;
     product.updatedAt = formatsToBrazilianLocalDate();
 
-    await this.repository.update(product._id, product);
+    await this.repository.update(product.id, product);
 
     return product;
   }

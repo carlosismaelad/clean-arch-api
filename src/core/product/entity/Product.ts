@@ -2,7 +2,7 @@ import { randomUUID } from "node:crypto";
 import IProductProps from "../../../shared/abstractions/IProductProps";
 
 export class Product {
-  public _id: string;
+  public id: string;
   public name: string;
   public description?: string;
   public price?: number;
@@ -11,7 +11,7 @@ export class Product {
   public updatedAt?: string;
 
   constructor(props: IProductProps) {
-    this._id = randomUUID();
+    this.id = randomUUID();
     this.name = props.name;
     this.description = props.description;
     this.price = props.price;
