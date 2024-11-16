@@ -1,9 +1,8 @@
 export default interface IProductProps {
-  id?: string;
   name: string;
-  description?: string;
-  price?: number;
+  description: string;
+  price: number;
   active?: boolean;
-  reatedAt?: string;
+  createdAt?: string;
   updatedAt?: string;
 }

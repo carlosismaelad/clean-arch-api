@@ -9,9 +9,8 @@ export class ProductRepositoryPostgres implements IProductRepository<Product> {
     const client = await getNewClient();
     try {
       const query =
-        "INSERT INTO products (id, name, description, price, active, created_at) VALUES ($1, $2, $3) RETURNING *";
+        "INSERT INTO products (name, description, price, active, created_at) VALUES ($1, $2, $3, $4, $5) RETURNING *";
       const values = [
-        item.id,
         item.name,
         item.description,
         item.price,
@@ -94,14 +93,15 @@ export class ProductRepositoryPostgres implements IProductRepository<Product> {
       // Atualizando o produto no banco de dados
       const queryUpdate = `
         UPDATE products
-        SET name = $1, price = $2, description = $3, active = $4
-        WHERE id = $5
+        SET name = $1, price = $2, description = $3, active = $4, updated_at = $5
+        WHERE id = $6
         RETURNING *`;
       const valuesUpdate = [
         item.name,
         item.price,
         item.description,
         item.active,
+        item.updatedAt,
         id,
       ];
       const resultUpdate = await client.query(queryUpdate, valuesUpdate);
@@ -120,7 +120,7 @@ export class ProductRepositoryPostgres implements IProductRepository<Product> {
       const resultCheck = await client.query(queryCheck, [id]);
 
       if (resultCheck.rows.length === 0) {
-        throw new Error("Produto não encontrado para deleção.");
+        throw new Error("Produto não encontrado para desativação.");
       }
 
       // Apenas "desativa" o produto no banco de dados

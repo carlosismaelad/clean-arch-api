@@ -27,26 +27,21 @@ export class ProductService {
     return await this.repository.createItem(product);
   }
 
-  async updateProduct(product: Product, data: IProductProps): Promise<Product> {
+  async updateProduct(id: string, data: Product): Promise<Product> {
     this.validateProductFields(data);
-
-    product.name = data.name;
-    product.description = data.description;
-    product.price = data.price;
-    product.updatedAt = formatsToBrazilianLocalDate();
-
-    await this.repository.update(product.id, product);
-
-    return product;
-  }
-
-  activateProduct(product: Product): void {
-    if (product.active) {
-      throw new Error("O produto já está ativo.");
+    const existingProduct = await this.repository.readById(id);
+    if (!existingProduct) {
+      throw new Error(`Produto com id ${id} não localizado para atualização!`);
     }
-
-    product.activate();
-    product.updatedAt = formatsToBrazilianLocalDate();
+    const updatedProduct = new Product({
+      name: data.name,
+      description: data.description,
+      price: data.price,
+      active: data.active,
+      updatedAt: formatsToBrazilianLocalDate(),
+    });
+    await this.repository.update(id, updatedProduct);
+    return updatedProduct;
   }
 
   async deactivateProduct(id: string, product: Product): Promise<void> {

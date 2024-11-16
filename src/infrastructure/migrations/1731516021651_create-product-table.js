@@ -9,8 +9,14 @@ exports.shorthands = undefined;
  * @returns {Promise<void> | void}
  */
 exports.up = (pgm) => {
+  pgm.sql('CREATE EXTENSION IF NOT EXISTS "pgcrypto";');
   pgm.createTable("products", {
-    id: { type: "varchar(500)", notNull: true, primaryKey: true },
+    id: {
+      type: "UUID",
+      notNull: true,
+      primaryKey: true,
+      default: pgm.func("gen_random_uuid()"),
+    },
     name: { type: "varchar(200)", notNull: true },
     description: { type: "text", notNull: true },
     price: { type: "double", notNull: true },
