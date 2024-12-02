@@ -5,7 +5,7 @@ import registerRoutes from "../routes/v1/registerRoutes";
 const server = fastify({ logger: true });
 
 export async function app() {
-  await server.register(registerRoutes, { prefix: "api/v1" });
+  await server.register(registerRoutes);
 
   try {
     const port = process.env.SERVER_PORT

@@ -14,7 +14,7 @@ export default async function productRoutes(app: FastifyInstance) {
   );
 
   app.post(
-    "/products",
+    "/api/v1/products",
     async (
       request: FastifyRequest<{ Body: IProductProps }>,
       reply: FastifyReply,
